@@ -1,11 +1,11 @@
 # ETC5521 Assignment 1 
 
-Team name: [FILL]
+Team name: Quokka
 
 Team members:
 
-* [FILL]
-* [FILL]
+* Dea Avega Editya
+* Siyi Li
 
 # Steps
 
