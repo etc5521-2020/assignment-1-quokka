@@ -16,6 +16,7 @@ output:
 library(tidyverse)
 library(janitor)
 library(readr)
+library(naniar)
 
 ```
 
@@ -28,26 +29,40 @@ census <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 slave_routes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-16/slave_routes.csv')
 african_names <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-16/african_names.csv')
 
+sum(is.na(slave_routes))
+
+#checking missing values (NA)
+naniar::miss_summary(slave_routes)
+naniar::miss_summary(african_names)
+
+#summary
+summary(slave_routes)
+summary(african_names)
+
 ```
 
 
 # Introduction and motivation
 
-We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA.
+We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md), we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA.
 
+This report has several limitations: 
+1. Several datasets used are only approximation of total number, i.e. route of slaves transportation is based on approximation inferred from all trans-Atlantic voyages records, and slaves names data only covers numbers of slaves who had saved during expedition. Hence, it may not capture real situation during slavery history.
+2. Census data only capture US demographics from 1790 to 1870 which is quite short regarding long existence of slavery before the census period.
+3. Some proportion of data has N/A value which maybe ignored during data exploration. 
 
 # Data description
 
 <!-- Write your data description under the header “Data description” in index.Rmd. A data description should tell the reader the source of the data, and detail the structure of the data, including variables, time frame of collection, collection methods. -->
 
-Our datasets are retrieved from github repository of tidytuesday project (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) which has original source from US Census's Archives, Slave Voyages, and Black Past. 
+Our datasets are retrieved from github repository of **tidytuesday** project, which has original source from US Census's Archives, Slave Voyages, and Black Past. 
 
 The data consists of 4 datasets as follows:
 1. Census (in csv format)
-  The dataset record the total slave populations across the United States during the slavery era and has 8 variables (region, division , year, total, white, black, black_free and black_slave) and 102 observation. The data is collected from a historical US census data with time period from 1790 to 1870. 
+  The dataset record the total slave populations across the United States during the slavery era and has 8 variables (region, division, year, total, white, black, black_free and black_slave) and 102 observation. The data is collected from a historical US census data with time period from 1790 to 1870. 
 
 2. Slave_routes (in csv format) 
-  The dataset has 8 variables (voyage_id, ship_name, port_origin, place_of_purchase, port_arrival, year_arrival, n_slaves_arrived, and captains_name) and 31.660 observations. The data is collected by approximating the total number of voyages carrying slaves from Africa, inferred from The 36,000 trans-Atlantic voyages logs. It covers information about transportation of slaves from 1514 to 1866.
+  The dataset has 8 variables (voyage_id, ship_name, port_origin, place_of_purchase, port_arrival, year_arrival, n_slaves_arrived, and captains_name) and 31.660 observations. The data is collected by approximating the total number of voyages carrying slaves from Africa, inferred from the 36,000 trans-Atlantic voyages logs. It covers information about transportation of slaves from 1514 to 1866.
   
 3. African_names (in csv format)
   The dataset has 11 variables (id, voyage id , name, gender, age, height, ship name, year arrival, port embark, and country origin) and 91.490 observations. The data is collected from liberated slaves by recording their names and ages. The record is from 1808 to 1862.
@@ -55,11 +70,18 @@ The data consists of 4 datasets as follows:
 4. Blackpast (in csv format)
   The dataset covers details around some events related to African-Americas history during slavery era until post-slavery including violence and racism events and celebrations of achievements. It has 6 variables (year, event, subject, country, state and era) and 896 observations. The data is compiled by blackpast organization (blackpast.org) from 1492 to 2009.
 
-Using these above datasets, we will explore several main questions like:
+The wrangling process will be conducted by combining  datasets of african_names and slave_routes by using "voyage_id" as key variable. In addition, this report will track slavery population in the USA based on census dataset, including average proportion of white and black slavery as well as proportion of free black and black slaves in US regions. The blackpast dataset can be used to add some detail information about particular events that maybe found interesting during data exploration.
+
+Therefore, using these mentioned datasets this report may find explanations on several main questions like:
 1. What is the demographic of slaves?
 2. Which region of the USA that most exploit the practice?   
 3. How is the proportion of white and black slaves, as well as black slaves and black free?
 
+References:
+1. Tidytuesday (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md),
+2. Slaves voyage (https://slavevoyages.org/)
+3. Blackpast (https://www.blackpast.org/african-american-history-timeline/)
+3. US census data (https://www.census.gov/content/dam/Census/library/working-papers/2002/demo/POP-twps0056.pdf)
 
 # Analysis and findings
 
