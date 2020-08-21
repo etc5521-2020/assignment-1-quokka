@@ -45,16 +45,16 @@ Our datasets are retrieved from github repository of tidytuesday project (https:
 
 The data consists of 4 datasets as follows:
 1. Census (in csv format)
-  The dataset record the total slave populations across the United States during the slavery era and has 8 variables (region, division , year, total, white, black, black_free and black_slave) and 102 observation. The data is collected from a historical US census data with time period from 1790 to 1870 
+  The dataset record the total slave populations across the United States during the slavery era and has 8 variables (region, division , year, total, white, black, black_free and black_slave) and 102 observation. The data is collected from a historical US census data with time period from 1790 to 1870. 
 
 2. Slave_routes (in csv format) 
-  the data covers transportation of slaves and has 8 variables (voyage_id, ship_name, port_origin, place_of_purchase, port_arrival, year_arrival, n_slaves_arrived, and captains_name) and 31.660 observations covers some details in slave transportation, from their origin places, trade hub, up to their arrival places. The record is from 1514 to 1866.
+  The dataset has 8 variables (voyage_id, ship_name, port_origin, place_of_purchase, port_arrival, year_arrival, n_slaves_arrived, and captains_name) and 31.660 observations. The data is collected by approximating the total number of voyages carrying slaves from Africa, inferred from The 36,000 trans-Atlantic voyages logs. It covers information about transportation of slaves from 1514 to 1866.
   
 3. African_names (in csv format)
-  The dataset contains a history of freed slaves with 11 variables (id, voyage id , name, gender, age, height, ship name, year arrival, port embark, and country origin) and 91.490 observations. The record is from 1808 to 1862.
+  The dataset has 11 variables (id, voyage id , name, gender, age, height, ship name, year arrival, port embark, and country origin) and 91.490 observations. The data is collected from liberated slaves by recording their names and ages. The record is from 1808 to 1862.
 
 4. Blackpast (in csv format)
-  The dataset covers details around the slow granting of various rights to African-Americans, post-slavery brutality, violence and racism, as well as celebrations of achievements across many different categories. It has 6 variables (year, event, subject, country, state and era) and 896 observations. The record is from 1492 to 2009
+  The dataset covers details around some events related to African-Americas history during slavery era until post-slavery including violence and racism events and celebrations of achievements. It has 6 variables (year, event, subject, country, state and era) and 896 observations. The data is compiled by blackpast organization (blackpast.org) from 1492 to 2009.
 
 Using these above datasets, we will explore several main questions like:
 1. What is the demographic of slaves?
