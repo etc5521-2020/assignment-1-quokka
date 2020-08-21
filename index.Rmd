@@ -33,7 +33,7 @@ african_names <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 
 # Introduction and motivation
 
-We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data we will look at how worse was the situation in the moment i.e. by looking at proportion of masters and slaves, and children slavery.
+We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA.
 
 [FILL] Give the bigger picture of the data, and inspire the reader to learn more about the problem by reading your analysis. 
 
@@ -58,8 +58,8 @@ The data consists of 4 datasets as follows:
 
 Using these above datasets, we will explore several main questions like:
 1. What is the demographic of slaves?
-2. How is the trading flow of slaves?
-3. How is the proportion of white and black slaves, as well as black slaves and black free ?
+2. Which region of the USA that most exploit the practice?   
+3. How is the proportion of white and black slaves, as well as black slaves and black free?
 
 
 # Analysis and findings
