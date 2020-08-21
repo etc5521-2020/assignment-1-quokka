@@ -35,7 +35,6 @@ african_names <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 
 We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA.
 
-[FILL] Give the bigger picture of the data, and inspire the reader to learn more about the problem by reading your analysis. 
 
 # Data description
 
