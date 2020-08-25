@@ -17,6 +17,7 @@ library(tidyverse)
 library(janitor)
 library(readr)
 library(naniar)
+library(dplyr)
 
 ```
 
@@ -94,7 +95,13 @@ References:
 
 Which region/state in the USA that most exploit the slavery practice?
 ```{r}
+census_prop <- census %>% 
+  mutate(prop_white = white/total, prop_black = black/total, prop_black_free = black_free/black, prop_black_slave = black_slaves/black)
 
+region <- census %>% 
+  filter(region != "USA Total") %>% 
+  group_by(region, year) %>% 
+  ggplot(aes(x = region, y = ))
 ```
 
 
