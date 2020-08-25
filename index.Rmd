@@ -18,6 +18,13 @@ output:
 [FILL] Give the bigger picture of the data, and inspire the reader to learn more about the problem by reading your analysis. 
 
 # Data description
+the source of the data, and detail the structure of the data, including variables, time frame of collection, collection methods.
+**there are 7 different datasets, such as brexit, dogs, trade..., which come from the  Economist.
+
+for brexit dataset, this is a timeseries data. There are 3 variables and 85 observation, and they are date of the poll,Percent who said Britain vote to leave EU was right and Percent who said Britain vote to leave EU was wrong.Moreover. these observations are collected from year of 2016 to year of 2018, and the time interval of this dataset is not a constant.
+
+for corbyn dataset,there are 2 variables and they are Political identity or group and Average number of facebook likes per Facebook post in 2016.
+
 
 # Analysis and findings
 
