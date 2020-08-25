@@ -47,9 +47,9 @@ summary(african_names)
 We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md), we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA.
 
 This report has several limitations: 
-1. Several datasets used are only approximation of total number, i.e. route of slaves transportation is based on approximation inferred from all trans-Atlantic voyages records, and slaves names data only covers numbers of slaves who had saved during expedition. Hence, it may not capture real situation during slavery history.
+1. Several datasets used are only approximation of total number, i.e. route of slaves transportation is based on approximation inferred from all trans-Atlantic voyages records, and slaves names data only covers numbers of slaves who had been saved during expedition. Hence, it may not capture real situation during slavery history.
 2. Census data only capture US demographics from 1790 to 1870 which is quite short regarding long existence of slavery before the census period.
-3. Some proportion of data has N/A value which maybe ignored during data exploration. 
+3. Some proportion of data has N/A value and errors (i.e. some slaves' heights are recorded as 0 inch) which maybe ignored during data exploration. 
 
 # Data description
 
@@ -72,10 +72,12 @@ The data consists of 4 datasets as follows:
 
 The wrangling process will be conducted by combining  datasets of african_names and slave_routes by using "voyage_id" as key variable. In addition, this report will track slavery population in the USA based on census dataset, including average proportion of white and black slavery as well as proportion of free black and black slaves in US regions. The blackpast dataset can be used to add some detail information about particular events that maybe found interesting during data exploration.
 
-Therefore, using these mentioned datasets this report may find explanations on several main questions like:
+Therefore, using these mentioned datasets this report may find explanations on a main question and three secondary questions. 
+The primary question is what is the history of black people in the USA including their origin and purpose of coming to the country. 
+The secondary questions are:
 1. What is the demographic of slaves?
 2. Which region of the USA that most exploit the practice?   
-3. How is the proportion of white and black slaves, as well as black slaves and black free?
+3. How unfortunate is for being a black in the USA?
 
 References:
 1. Tidytuesday (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md),
@@ -88,5 +90,12 @@ References:
 <!-- Brainstorm what questions would be possible to answer with this data (and only this data). Articulate the primary question, and then three secondary questions. -->
 
 [FILL] Should include at least one plot or numerical summary for each of your questions, that helps the reader arrive at an answer. You should also write paragraphs describing the methods, summaries and findings. 
+
+
+Which region/state in the USA that most exploit the slavery practice?
+```{r}
+
+```
+
 
 # References
