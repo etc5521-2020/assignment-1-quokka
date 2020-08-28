@@ -137,7 +137,7 @@ new_plty %>% layout(title='Composition of Slaves Based on Gender',
 ```
 
 
-```{r demo2, fig.cap = "Age Distribution", echo = FALSE, out.height="50%", out.width="50%", message=FALSE}
+```{r demo2, fig.cap = "Age Distribution", echo = FALSE, out.height="50%", fig.align="center",out.width="50%", message=FALSE}
 african_names%>%
   select(gender, age)%>%
   na.omit()%>%
