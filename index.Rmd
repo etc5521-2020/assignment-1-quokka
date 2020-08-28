@@ -12,6 +12,7 @@ output:
     df_print: paged
 team: Quokka
 subtitle: ''
+bibliography: references.bib
 ---
 
 [This assignment is for ETC5521 Assignment 1 by Team `r rmarkdown::metadata$team` comprising of `r knitr::combine_words(rmarkdown::metadata$author)`.]{style="color:#006DAE;"}
@@ -54,12 +55,12 @@ summary(african_names)
 
 # Introduction and motivation
 
-We are motivated to explore dark history of slavery in United States of America and how this moment changed over time of hundred years. Through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md), we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA.
+We are motivated to explore history of slavery in the United States of America (USA) and how this dark moment changed over time of hundred years. Through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md), we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA. 
 
 This report has several limitations: 
-1. Several datasets used are only approximation of total number, i.e. route of slaves transportation is based on approximation inferred from all trans-Atlantic voyages records, and slaves names data only covers numbers of slaves who had been saved during expedition. Hence, it may not capture real situation during slavery history.
-2. Census data only capture US demographics from 1790 to 1870 which is quite short regarding long existence of slavery before the census period.
-3. Some proportion of data has N/A value and errors (i.e. some slaves' heights are recorded as 0 inch) which maybe ignored during data exploration. 
+\newline 1. Several datasets used are only approximation of total number, i.e. route of slaves transportation is based on approximation inferred from all trans-Atlantic voyages records, and slaves names data only covers numbers of slaves who had been saved during expedition. Hence, it may not capture real situation during slavery history.
+\newline 2. Census data only capture US demographics from 1790 to 1870 which is quite short regarding long existence of slavery before the census period. In addition, West region only has census data started from 1850.
+\newline 3. Some proportion of data has N/A value and errors (i.e. some slaves' heights are recorded as 0 inch) which maybe ignored during data exploration. 
 
 # Data description
 
@@ -68,8 +69,9 @@ This report has several limitations:
 Our datasets are retrieved from github repository of **tidytuesday** project, which has original source from US Census's Archives, Slave Voyages, and Black Past. 
 
 The data consists of 4 datasets as follows:
+
 1. Census (in csv format)
-  The dataset record the total slave populations across the United States during the slavery era and has 8 variables (region, division, year, total, white, black, black_free and black_slave) and 102 observation. The data is collected from a historical US census data with time period from 1790 to 1870. 
+  The dataset record the total slave populations across the USA during the slavery era and has 8 variables (region, division, year, total, white, black, black_free and black_slave) and 102 observation. The data is collected from a historical US census data with time period from 1790 to 1870. 
 
 2. Slave_routes (in csv format) 
   The dataset has 8 variables (voyage_id, ship_name, port_origin, place_of_purchase, port_arrival, year_arrival, n_slaves_arrived, and captains_name) and 31.660 observations. The data is collected by approximating the total number of voyages carrying slaves from Africa, inferred from the 36,000 trans-Atlantic voyages logs. It covers information about transportation of slaves from 1514 to 1866.
@@ -83,15 +85,12 @@ The data consists of 4 datasets as follows:
 The wrangling process will be conducted by combining  datasets of african_names and slave_routes by using "voyage_id" as key variable. In addition, this report will track slavery population in the USA based on census dataset, including average proportion of white and black slavery as well as proportion of free black and black slaves in US regions. The blackpast dataset can be used to add some detail information about particular events that maybe found interesting during data exploration.
 
 Therefore, using these mentioned datasets this report may find explanations on a main question and three secondary questions. 
-The primary question is **does long slavery history in the USA explain current racism in the country**? 
-<!-- correspond to a research about the most racism region in the USA -->
-This primary question can be answered after answering several secondary questions which are:
+The primary question is **does the long slavery history in the USA explain current racism trend in the country**? 
+
+This primary question can be found after answering several secondary questions which are:
 1. What is the demographic of slaves? 
-<!-- will show about their purpose of coming i.e. laboring -->
-2. Which region of the USA that most exploit the practice? 
-<!-- showing proportion of white and slaves -->
-3. How unfortunate is for being a black in the USA?
-<!-- using blackpast info to find info about bad event in USA only -->
+2. Which regions of the USA that had mostly exploited the practice? 
+3. Which regions of the USA that most challenging for african-americans?
 
 References:
 1. Tidytuesday (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md),
@@ -101,19 +100,17 @@ References:
 
 # Analysis and findings
 
-<!-- Brainstorm what questions would be possible to answer with this data (and only this data). Articulate the primary question, and then three secondary questions. -->
+## Demographic of Black Slaves
 
-[FILL] Should include at least one plot or numerical summary for each of your questions, that helps the reader arrive at an answer. You should also write paragraphs describing the methods, summaries and findings. 
+Using african_names dataset we try to extract information about demographic of slaves. By looking at the dataset, we can have initial picture of the slavery practice. We group the category of slaves by id (since we are not interested to know their names and sometimes people can have same names), gender and age. 
 
-## Slaves Demography
+We can get information about gender category from pie chart of figure \@ref(figure:demo1). As we can see that men occupies the largest percentage of total slaves in the observed data, followed by boys. Proportion of boys is also larger than women. Meanwhile, girls contributes to the smallest percentage of slaves. Hence, from the figure we can see that men and boys' proportion are significantly larger than female (women and girls). However, we realize that if we look at children proportion (boys and girls) as shown in figure \@ref(figure:demo), it is really sad to know that they make up about a half of the total slaves. 
 
-According to the gender we can divide them into 2 different part, and they are Adult and Children. There are 30,366 children while the number of the adults are 47,243.The difference between them around 17,000.
-We can get more information from the pie chart. Man occupied the largest percentage among the gender varible. On the contrary, the Girl has the smallest percentage.
+When we look at the age distribution of slaves as shown in figure \@ref(figure:demo2), majority of the slaves are between **15 and 35 years old**. This is because people in this age tend to more productive, as they were brought to be workers in the country according to prior information we got from blackpast.org. 
 
-When we look at the age of the different gender, it is easy to find that the some people just aged 0.5. It is pretty young. One posible reason of that phenomenon is that their parent is one of the slaves.
-Majority of the people are between **15 years old and 35 years old**. This is because people in this age tend to more productive, as they were brought to be workers in the country.
+Though, there are some outliers in the dataset which we suspect due to errors in data recording i.e. a boy has age of 40 and man with 77 years old (which we think is too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as under 5 years old. They are absolutely pretty young. One possible reason is that their parents are one of the slaves hence brought along with them.
 
-```{r demo1, echo = FALSE, out.height="60%", out.width="60%",message=FALSE}
+```{r demo, fig.caption= "Maturity of Slaves", echo = FALSE, warning = FALSE, out.height="60%", out.width="60%",message=FALSE}
 african_names %>%
   select(id, gender, age)%>%
   na.omit()%>%
@@ -126,25 +123,28 @@ african_names %>%
  new_type<-rbind(new, c("children", colSums(new[1:2,2])),
                  c("Adults", colSums(new[3:4,2])))
  
-target<-c("children","Adults")
+ target<-c("children","Adults")
 filter(new_type, gender %in% target)%>%
-   ggplot(aes(x=gender,y=total, fill=factor(gender)))+
+   ggplot(aes(x=gender,y= total, fill=factor(gender)))+
   geom_bar(stat="identity",position="dodge")+
   xlab("Type")+ylab("Number")+
-  guides(fill = guide_legend("Gender"))
+  labs(fill = "Maturity")
+ 
+  
+```
 
 
-new_plty<-plot_ly(new, labels = ~gender, values = ~total, type ='pie')
+```{r demo1, out.height="100%", out.width="100%", echo = FALSE}
+
+new_plty<-plot_ly(new, labels = ~gender, values = ~total, type ='pie', width = 400, height = 200)
 new_plty %>% layout(title='The number of ench gender',
                     xaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE),
                     yaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE))
 
-
-
 ```
 
 
-```{r demo2, echo = FALSE, out.height="80%", out.width="80%"}
+```{r demo2, fig.caption = "Age Distribution of Slaves", echo = FALSE, out.height="100%", out.width="100%", message=FALSE}
 african_names%>%
   select(gender, age)%>%
   na.omit()%>%
@@ -163,6 +163,7 @@ african_names%>%
                       zeroline=FALSE))
 ```
 
+
 ```{r join_slave, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
 
 slave_join <- left_join(slave_routes, african_names, by = "voyage_id")
@@ -173,7 +174,9 @@ naniar::vis_miss(slave_join, warn_large_data = FALSE)
 
 ```
 
-## Which region/state in the USA that most exploit the slavery practice?
+
+## The most exploiting region in the USA
+
 
 ```{r region_census, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
 
@@ -250,7 +253,7 @@ W <- state %>%
 
 ```
 
-```{r compare-region, echo = FALSE}
+```{r compare-region, fig.align="center", echo = FALSE}
 ggarrange(N, M, S, W,
           ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
 ```
@@ -294,14 +297,15 @@ WS <- census %>%
 
 ```
 
-```{r south_all, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
+```{r south_all, fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
 
 ggarrange(SA, ES, WS,
           ncol = 1, nrow = 3, legend = "top", common.legend = TRUE)
 ```
 
 
-# How unfortunate is for being a black in the United States of America?
+# The most challenging region for African-Americans
+
 In this section, we will look at some unfortunate events that was happenned in the pas using data from blakcpast dataset. For the purpose, we will filter country of interest to be only the USA.
 
 ```{r event, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
@@ -322,7 +326,7 @@ blackpast_usa <- blackpast %>%
 
 ```
 
-```{r sentiment, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
+```{r sentiment, echo = FALSE, message = FALSE}
 
 # using nrc package for analyse negative sentiment
 nrc_sentiments <- get_sentiments("nrc") %>% 
@@ -369,7 +373,7 @@ text_tidy <- left_join(text_tidy, nrc_sentiments) %>%
 
 ```
 
-```{r sentiment_region, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
+```{r sentiment_region, echo = FALSE, message = FALSE, fig.align="center", out.height="50%", out.width="50%"}
 plot_sentiment2 <- text_tidy %>% 
   ggplot(aes(x = sentiment, y = word, fill= region, group = region)) +
   geom_col() +
@@ -384,7 +388,7 @@ plot_sentiment2
 
 ```
 
-```{r sentiment_negative, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
+```{r sentiment_negative, fig.align="center", echo = FALSE, message = FALSE, out.height="50%", out.width="50%"}
 
 # only bad sentiment analysed
 plot_sentiment3 <- text_tidy %>% 
@@ -412,4 +416,4 @@ The history of slavery has deeply rooted in some parts of the USA, particularly 
 According to sentiment analysis from blackpast record of events, we can see that most bad events took place in South region followed by Northeast region. This finding coincidentally match with a 2015 research of @journal that describes these two regions as the most racist regions in the United States, by calculating number of google searches in the country that contain the N-word. 
 (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0122963#pone.0122963.ref001) 
 
-# References
+## Bibliography
