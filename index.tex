@@ -141,14 +141,6 @@ References of data sets:
 \hypertarget{demographic-of-black-slaves}{%
 \subsection{Demographic of Black Slaves}\label{demographic-of-black-slaves}}
 
-In this section, we will extract some information from african\_names dataset related to demographic of slaves. By extracting and analyzing the data, we can have initial picture of the slavery practice before moving on to further analysis in the following sections. We group the category of slaves by \textbf{id} (since we are not interested to know their names and sometimes people can have similar names), \textbf{gender} and \textbf{age}.
-
-Thus, we can get information about gender category from a pie chart of figure \ref{fig:demo1}. As can be seen from the plot, that men occupy the largest percentage of total slaves in the observed data, followed by boys. Proportion of boys is also larger than women. Meanwhile, girls contribute to the smallest percentage of slaves. In general, we can see that men and boys' proportion are significantly larger than female (women and girls). However, we realize that if we look at children proportion (boys and girls) as shown in figure \ref{figure:demo}, it is really sad to know that they make up almost a half of the total slaves.
-
-When we look at the age distribution of slaves as shown in figure \ref{fig:demo2}, majority of the slaves are between \textbf{15 and 35 years old}. This range of productive ages is unsurprising because they were brought into the country mainly to be a worker, according to prior information we got from blackpast.org.
-
-Though, there are some outlier that we can spot from the figure \ref{fig:demo2} which we suspect due to errors in data recording i.e.~a boy has age of 40 and a man is 77 years old (which we think way too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as some children under 5 years old, which are absolutely pretty young. One possible reason is that their parents are among the slaves that brought along their children.
-
 \begin{figure}
 
 {\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{index_files/figure-latex/demo-1} 
@@ -174,42 +166,48 @@ Though, there are some outlier that we can spot from the figure \ref{fig:demo2} 
 \includegraphics[width=1\linewidth,height=1\textheight]{index_files/figure-latex/demo2-1} \caption{Age Distribution}\label{fig:demo2}
 \end{figure}
 
+In this section, we will extract some information from african\_names dataset related to demographic of slaves. By extracting and analyzing the data, we can have initial picture of the slavery practice before moving on to further analysis in the following sections. We group the category of slaves by \textbf{id} (since we are not interested to know their names and sometimes people can have similar names), \textbf{gender} and \textbf{age}.
+
+Thus, we can get information about gender category from a pie chart of figure \ref{fig:demo1}. As can be seen from the plot, that men occupy the largest percentage of total slaves in the observed data, followed by boys. Proportion of boys is also larger than women. Meanwhile, girls contribute to the smallest percentage of slaves. In general, we can see that men and boys' proportion are significantly larger than female (women and girls). However, we realize that if we look at children proportion (boys and girls) as shown in figure \ref{figure:demo}, it is really sad to know that they make up almost a half of the total slaves.
+
+When we look at the age distribution of slaves as shown in figure \ref{fig:demo2}, majority of the slaves are between \textbf{15 and 35 years old}. This range of productive ages is unsurprising because they were brought into the country mainly to be a worker, according to prior information we got from blackpast.org.
+
+Though, there are some outlier that we can spot from the figure \ref{fig:demo2} which we suspect due to errors in data recording i.e.~a boy has age of 40 and a man is 77 years old (which we think way too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as some children under 5 years old, which are absolutely pretty young. One possible reason is that their parents are among the slaves that brought along their children.
+
 \hypertarget{the-most-exploiting-region-in-the-usa}{%
 \subsection{The most exploiting region in the USA}\label{the-most-exploiting-region-in-the-usa}}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{index_files/figure-latex/compareregion-1} 
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{index_files/figure-latex/compare-region-1} 
 
 }
 
-\caption{Composition of White and Black}\label{fig:compareregion}
+\caption{Composition of White and Black}\label{fig:compare-region}
 \end{figure}
 
-For answering the question of which region that most exploits the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will see the trend proportion of these three categories (white, black slaves, and black free), as seen in figure \ref{fig:compareregion}.
+For answering the question of which region that most exploits the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will see the trend proportion of these three categories (white, black slaves, and black free), as seen in figure \ref{fig:compare-region}.
 
 Seeing the plot, we can easily spot that \textbf{South region} has the most contrast pattern which distinguish the region from the others. The proportion of white people in South region slightly decrease from 1800 until 1860, however the proportion of black slaves is growing and comprises more than a quarter of the total population in that region.
 
-\textbackslash begin\{figure\}
+\begin{figure}
 
-\{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{index_files/figure-latex/south_all-1}
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{index_files/figure-latex/south-all-1} 
 
-\}
+}
 
-\caption{Proportion of White and Black}
-
-(\#fig:south\_all)
-\textbackslash end\{figure\}
+\caption{Proportion of White and Black}\label{fig:south-all}
+\end{figure}
 
 After spotting the pattern, we are interested to explore further in the South region to see the slavery practice in division level. South region consists of three divisions, South Atlantic, East South Central and West South Central.
-From figure @ref(fig:south\_all) we can see clearly that East South Central division has more progressive pattern of exploitation during the observed period, where other divisions tend to have more stable pattern of slavery practice. However, all of these divisions have quite similar proportion of black slaves in the last census year of slavery period (1860).
+From figure \ref{fig:south-all} we can see clearly that East South Central division has more progressive pattern of exploitation during the observed period, where other divisions tend to have more stable pattern of slavery practice. However, all of these divisions have quite similar proportion of black slaves in the last census year of slavery period (1860).
 
 \hypertarget{the-most-unfriendly-region-for-african-americans}{%
 \subsection{The most unfriendly region for African-Americans}\label{the-most-unfriendly-region-for-african-americans}}
 
-In this section, we will connect the past and the post of slavery in the USA through some observed events from blackpast data set. For the purpose, we will first filter country of interest in the data set to be only the USA. Later on, we will select only important words filtered using English stop words of tidytext R package (Silge and Robinson (2016)). Having essential words, we will try to find various sentiments in these words by using NRC sentiment and grouping it by region.
+In this section, we will connect the past and post-slavery period in the USA through some observed events from blackpast data set. For the purpose, we will first filter country of interest in the data set to be only the USA. Later on, we will select only important words (filtered using English stop words of tidytext R package (Silge and Robinson (2016))). Having all essential words, we will try to find various sentiments in these words by using NRC sentiment of Mohammad (2018) and grouping it by region.
 
-In order to link this analysis with the previous section, we add variable of regions that correspond to the state names in the blackpast data set. For example, we add Northeast for covering states like Connecticut, New York and New Jersey.
+In order to link this analysis with the previous section, we add variable of regions that correspond to the state names in the blackpast data set. For example, we add Northeast for covering states like Connecticut, New York and New Jersey. In addition we also focus on all events that related to slavery and racism behavior toward African-American, by only selecting relevant subject such as \textbf{``Slave Laws'', ``Slave Labor'', ``Racial Restrictions'', ``Racial Violence'',``Resistance to Enslavement'', ``The Slavery Controversy'', and ``Antebellum Slavery'')}.
 
 \textbackslash begin\{figure\}
 
@@ -233,30 +231,64 @@ In order to link this analysis with the previous section, we add variable of reg
 (\#fig:sentiment\_negative)
 \textbackslash end\{figure\}
 
-Using these method, we can observe frequency of bad events for black people in USA. According to the analysis in figure @ref(fig:sentiment\_region), most nuance of observed events are filled with \textbf{negative, fear and anger}. Furthermore, most events recorded were occured in South region. It is not surprising given the previous finding that South region is a region that seems really exploiting slavery culture.
+Using these method, we can observe occurences of bad event for African-American in the data set which mostly comprises of racial restrictions and racial violence. According to the analysis in figure @ref(fig:sentiment\_region), most nuance of observed events are filled with \textbf{negative, fear and anger}. Moreover, most events recorded were occurred in South region. It is not surprising given the previous finding that South region is the region that seems really exploiting slavery practice.
 
-We then focus on particular bad events which represented by nuance of disgust, fear, negative and sadness. Using these sentiments, we can see and confirm that South and Northeast region contributed to unfortunate events for black people. On the other hand, \textbf{West region} maybe a good place to live for them, due to very few bad incidents happened there.
+We then focus on particular bad events which represented by sentiment of ``disgust'', ``fear'', ``negative'' and ``sadness'' and plot it into bar chart as seen in figure @ref(fig:sentiment\_negative). Using these sentiments, we can see that South and Northeast region are seems like ``unfriendly'' to the African-American people since both regions contribute to most of these bad events in the observed data. On the other hand, \textbf{West region} maybe a good place to live for African-American, due to very few bad incidents happened there.
 
 \hypertarget{summary}{%
 \subsection{Summary}\label{summary}}
 
-The history of slavery has deeply rooted in some parts of the USA, particularly in South region. The slaves were brought into the country mainly for being workers, therefore the majority of slaves are \textbf{15 years old and 35 years old}
+The history of slavery has deeply rooted in some parts of the USA, and the practice is mostly exploited in the South region. The slaves were brought into the country mainly for being a worker, therefore most slaves were in their productive ages, ranges from 15 to 35 years old.
 
-According to sentiment analysis from blackpast record of events, we can see that most bad events took place in South region followed by Northeast region. This finding coincidentally match with a 2015 research of Chae et al. (2015) that describes these two regions as the most racist regions in the United States, by calculating number of google searches in the country that contain the N-word.
-(\url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0122963\#pone.0122963.ref001})
+According to sentiment analysis from blackpast record of events, we can see that most bad events took place in \textbf{South region} followed by \textbf{Northeast region}.
+
+This finding is quite intriguing and inadvertently backed by a 2015 research by Chae et al. (2015) that describes these two regions as the most racist regions in the United States.
 
 \hypertarget{bibliography}{%
 \section*{Bibliography}\label{bibliography}}
 \addcontentsline{toc}{section}{Bibliography}
 
 \hypertarget{refs}{}
+\leavevmode\hypertarget{ref-ggthemes}{}%
+Arnold, Jeffrey B. 2019. \emph{Ggthemes: Extra Themes, Scales and Geoms for 'Ggplot2'}. \url{https://CRAN.R-project.org/package=ggthemes}.
+
+\leavevmode\hypertarget{ref-gridextra}{}%
+Auguie, Baptiste. 2017. \emph{GridExtra: Miscellaneous Functions for "Grid" Graphics}. \url{https://CRAN.R-project.org/package=gridExtra}.
+
 \leavevmode\hypertarget{ref-journal}{}%
 Chae, David H., Sean Clouston, Mark L. Hatzenbuehler, Michael R. Kramer, Hannah L. F. Cooper, Sacoby M. Wilson, Seth I. Stephens-Davidowitz, Robert S. Gold, and Bruce G. Link. 2015. ``Association between an Internet-Based Measure of Area Racism and Black Mortality.'' Edited by Hajo Zeeb. \emph{PLOS ONE} 10 (4): e0122963. \url{https://doi.org/10.1371/journal.pone.0122963}.
+
+\leavevmode\hypertarget{ref-janitor}{}%
+Firke, Sam. 2020. \emph{Janitor: Simple Tools for Examining and Cleaning Dirty Data}. \url{https://CRAN.R-project.org/package=janitor}.
+
+\leavevmode\hypertarget{ref-lubridate}{}%
+Grolemund, Garrett, and Hadley Wickham. 2011. ``Dates and Times Made Easy with lubridate.'' \emph{Journal of Statistical Software} 40 (3): 1--25. \url{http://www.jstatsoft.org/v40/i03/}.
+
+\leavevmode\hypertarget{ref-ggpubr}{}%
+Kassambara, Alboukadel. 2020. \emph{Ggpubr: 'Ggplot2' Based Publication Ready Plots}. \url{https://CRAN.R-project.org/package=ggpubr}.
+
+\leavevmode\hypertarget{ref-nrc}{}%
+Mohammad, Saif M. 2018. \emph{Word Affect Intensities}. Miyazaki, Japan.
+
+\leavevmode\hypertarget{ref-plotly}{}%
+Sievert, Carson. 2020. \emph{Interactive Web-Based Data Visualization with R, Plotly, and Shiny}. Chapman; Hall/CRC. \url{https://plotly-r.com}.
 
 \leavevmode\hypertarget{ref-tidytext}{}%
 Silge, Julia, and David Robinson. 2016. ``Tidytext: Text Mining and Analysis Using Tidy Data Principles in R.'' \emph{JOSS} 1 (3). \url{https://doi.org/10.21105/joss.00037}.
 
+\leavevmode\hypertarget{ref-naniar}{}%
+Tierney, Nicholas, Di Cook, Miles McBain, and Colin Fay. 2020. \emph{Naniar: Data Structures, Summaries, and Visualisations for Missing Data}. \url{https://CRAN.R-project.org/package=naniar}.
+
+\leavevmode\hypertarget{ref-reshape}{}%
+Wickham, Hadley. 2007. ``Reshaping Data with the reshape Package.'' \emph{Journal of Statistical Software} 21 (12): 1--20. \url{http://www.jstatsoft.org/v21/i12/}.
+
 \leavevmode\hypertarget{ref-tidyverse}{}%
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D'Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. ``Welcome to the tidyverse.'' \emph{Journal of Open Source Software} 4 (43): 1686. \url{https://doi.org/10.21105/joss.01686}.
+
+\leavevmode\hypertarget{ref-dplyr}{}%
+Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2020. \emph{Dplyr: A Grammar of Data Manipulation}. \url{https://CRAN.R-project.org/package=dplyr}.
+
+\leavevmode\hypertarget{ref-readr}{}%
+Wickham, Hadley, Jim Hester, and Romain Francois. 2018. \emph{Readr: Read Rectangular Text Data}. \url{https://CRAN.R-project.org/package=readr}.
 
 \end{document}

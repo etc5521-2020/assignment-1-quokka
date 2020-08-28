@@ -5,16 +5,14 @@ author:
 - Siyi Li
 date: "`r Sys.Date()`"
 output:
-  bookdown::pdf_document2: default
   html_document:
     df_print: paged
-  html_document2: default
-  pdf_document2: default
+  pdf_document: default
 team: Quokka
 subtitle: Unboxing the Dark History of US Slavery
 bibliography: references.bib
 nocite: |
-  @tidyverse
+  @tidyverse, @janitor, @readr, @naniar, @dplyr, @gridextra, @ggpubr, @reshape, @lubridate, @plotly, @ggthemes
 ---
 
 [This assignment is for ETC5521 Assignment 1 by Team `r rmarkdown::metadata$team` comprising of `r knitr::combine_words(rmarkdown::metadata$author)`.]{style="color:#006DAE;"}
@@ -100,13 +98,6 @@ References of data sets:
 
 ## Demographic of Black Slaves
 
-In this section, we will extract some information from african_names dataset related to demographic of slaves. By extracting and analyzing the data, we can have initial picture of the slavery practice before moving on to further analysis in the following sections. We group the category of slaves by **id** (since we are not interested to know their names and sometimes people can have similar names), **gender** and **age**. 
-
-Thus, we can get information about gender category from a pie chart of figure \@ref(fig:demo1). As can be seen from the plot, that men occupy the largest percentage of total slaves in the observed data, followed by boys. Proportion of boys is also larger than women. Meanwhile, girls contribute to the smallest percentage of slaves. In general, we can see that men and boys' proportion are significantly larger than female (women and girls). However, we realize that if we look at children proportion (boys and girls) as shown in figure \@ref(figure:demo), it is really sad to know that they make up almost a half of the total slaves. 
-
-When we look at the age distribution of slaves as shown in figure \@ref(fig:demo2), majority of the slaves are between **15 and 35 years old**. This range of productive ages is unsurprising because they were brought into the country mainly to be a worker, according to prior information we got from blackpast.org. 
-
-Though, there are some outlier that we can spot from the figure \@ref(fig:demo2) which we suspect due to errors in data recording i.e. a boy has age of 40 and a man is 77 years old (which we think way too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as some children under 5 years old, which are absolutely pretty young. One possible reason is that their parents are among the slaves that brought along their children.
 
 ```{r demo, fig.cap = "Maturity of Slaves", echo = FALSE, warning = FALSE, out.height="60%", out.width="60%",fig.align = "center", message=FALSE}
 african_names %>%
@@ -132,7 +123,7 @@ filter(new_type, gender %in% target)%>%
 ```
 
 
-```{r demo1, fig.cap="Composition Based on Gender", out.height="100%", out.width="100%", echo = FALSE}
+```{r demo1, fig.cap="Composition Based on Gender", out.height="100%", out.width="60%", fig.align="center", echo = FALSE}
 
 new_plty<-plot_ly(new, labels = ~gender, values = ~total, type ='pie', width = 400, height = 200)
 new_plty %>% layout(title='Composition of Slaves Based on Gender',
@@ -161,11 +152,18 @@ african_names%>%
                       zeroline=FALSE))
 ```
 
+In this section, we will extract some information from african_names dataset related to demographic of slaves. By extracting and analyzing the data, we can have initial picture of the slavery practice before moving on to further analysis in the following sections. We group the category of slaves by **id** (since we are not interested to know their names and sometimes people can have similar names), **gender** and **age**. 
+
+Thus, we can get information about gender category from a pie chart of figure \@ref(fig:demo1). As can be seen from the plot, that men occupy the largest percentage of total slaves in the observed data, followed by boys. Proportion of boys is also larger than women. Meanwhile, girls contribute to the smallest percentage of slaves. In general, we can see that men and boys' proportion are significantly larger than female (women and girls). However, we realize that if we look at children proportion (boys and girls) as shown in figure \@ref(figure:demo), it is really sad to know that they make up almost a half of the total slaves. 
+
+When we look at the age distribution of slaves as shown in figure \@ref(fig:demo2), majority of the slaves are between **15 and 35 years old**. This range of productive ages is unsurprising because they were brought into the country mainly to be a worker, according to prior information we got from blackpast.org. 
+
+Though, there are some outlier that we can spot from the figure \@ref(fig:demo2) which we suspect due to errors in data recording i.e. a boy has age of 40 and a man is 77 years old (which we think way too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as some children under 5 years old, which are absolutely pretty young. One possible reason is that their parents are among the slaves that brought along their children.
 
 ## The most exploiting region in the USA
 
 
-```{r region_census, fig.cap= "The Most Exploiting Region", echo = FALSE, message = FALSE}
+```{r region_census, echo = FALSE, message = FALSE}
 
 
 # # ploting US  
@@ -250,16 +248,17 @@ W <- census_tidy %>%
 
 ```
 
-```{r compareregion, fig.cap= "Composition of White and Black", fig.align="center", out.height="60%", out.width="60%", echo = FALSE}
+```{r compare-region, fig.cap= "Composition of White and Black", fig.align="center", out.height="60%", out.width="60%", echo = FALSE}
+
 ggarrange(N, M, S, W,
           ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
 ```
 
-For answering the question of which region that most exploits the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will see the trend proportion of these three categories (white, black slaves, and black free), as seen in figure \@ref(fig:compareregion).
+For answering the question of which region that most exploits the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will see the trend proportion of these three categories (white, black slaves, and black free), as seen in figure \@ref(fig:compare-region).
 
 Seeing the plot, we can easily spot that **South region** has the most contrast pattern which distinguish the region from the others. The proportion of white people in South region slightly decrease from 1800 until 1860, however the proportion of black slaves is growing and comprises more than a quarter of the total population in that region.
 
-```{r south_div, echo = FALSE, include = FALSE, results="hide", message = FALSE}
+```{r south_div, echo = FALSE, include = FALSE, results = "hide", message = FALSE}
 
 # Look further in south
 
@@ -305,20 +304,20 @@ WS <- census_south %>%
 WS
 ```
 
-```{r south_all, fig.cap= "Proportion of White and Black", fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
+```{r south-all, fig.cap= "Proportion of White and Black", fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
 
 ggarrange(SA, ES, WS,
           ncol = 1, nrow = 3, legend = "top", common.legend = TRUE)
 ```
 
 After spotting the pattern, we are interested to explore further in the South region to see the slavery practice in division level. South region consists of three divisions, South Atlantic, East South Central and West South Central.
-From figure \@ref(fig:south_all) we can see clearly that East South Central division has more progressive pattern of exploitation during the observed period, where other divisions tend to have more stable pattern of slavery practice. However, all of these divisions have quite similar proportion of black slaves in the last census year of slavery period (1860). 
+From figure \@ref(fig:south-all) we can see clearly that East South Central division has more progressive pattern of exploitation during the observed period, where other divisions tend to have more stable pattern of slavery practice. However, all of these divisions have quite similar proportion of black slaves in the last census year of slavery period (1860). 
 
 ## The most unfriendly region for African-Americans
 
-In this section, we will connect the past and the post of slavery in the USA through some observed events from blackpast data set. For the purpose, we will first filter country of interest in the data set to be only the USA. Later on, we will select only important words filtered using English stop words of tidytext R package (@tidytext). Having essential words, we will try to find various sentiments in these words by using NRC sentiment and grouping it by region. 
+In this section, we will connect the past and post-slavery period in the USA through some observed events from blackpast data set. For the purpose, we will first filter country of interest in the data set to be only the USA. Later on, we will select only important words (filtered using English stop words of tidytext R package (@tidytext)). Having all essential words, we will try to find various sentiments in these words by using NRC sentiment of @nrc and grouping it by region. 
 
-In order to link this analysis with the previous section, we add variable of regions that correspond to the state names in the blackpast data set. For example, we add Northeast for covering states like Connecticut, New York and New Jersey.  
+In order to link this analysis with the previous section, we add variable of regions that correspond to the state names in the blackpast data set. For example, we add Northeast for covering states like Connecticut, New York and New Jersey. In addition we also focus on all events that related to slavery and racism behavior toward African-American, by only selecting relevant subject such as **"Slave Laws", "Slave Labor", "Racial Restrictions", "Racial Violence","Resistance to Enslavement", "The Slavery Controversy", and "Antebellum Slavery")**. 
 
 ```{r event, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
 # select bad events in the US black history
@@ -414,15 +413,16 @@ text_tidy %>%
 ```
 
 
-Using these method, we can observe frequency of bad events for black people in USA. According to the analysis in figure \@ref(fig:sentiment_region), most nuance of observed events are filled with **negative, fear and anger**. Furthermore, most events recorded were occured in South region. It is not surprising given the previous finding that South region is a region that seems really exploiting slavery culture. 
+Using these method, we can observe occurences of bad event for African-American in the data set which mostly comprises of racial restrictions and racial violence. According to the analysis in figure \@ref(fig:sentiment_region), most nuance of observed events are filled with **negative, fear and anger**. Moreover, most events recorded were occurred in South region. It is not surprising given the previous finding that South region is the region that seems really exploiting slavery practice. 
 
-We then focus on particular bad events which represented by nuance of disgust, fear, negative and sadness. Using these sentiments, we can see and confirm that South and Northeast region contributed to unfortunate events for black people. On the other hand, **West region** maybe a good place to live for them, due to very few bad incidents happened there.
+We then focus on particular bad events which represented by sentiment of "disgust", "fear", "negative" and "sadness" and plot it into bar chart as seen in figure \@ref(fig:sentiment_negative). Using these sentiments, we can see that South and Northeast region are seems like "unfriendly" to the African-American people since both regions contribute to most of these bad events in the observed data. On the other hand, **West region** maybe a good place to live for African-American, due to very few bad incidents happened there.
 
 ## Summary
 
-The history of slavery has deeply rooted in some parts of the USA, particularly in South region. The slaves were brought into the country mainly for being workers, therefore the majority of slaves are **15 years old and 35 years old** 
+The history of slavery has deeply rooted in some parts of the USA, and the practice was mostly exploited in the South region following our exploration in the second section. The slaves were brought into the country mainly for being a worker, therefore most slaves were in their productive ages, ranges from 15 to 35 years old. 
 
-According to sentiment analysis from blackpast record of events, we can see that most bad events took place in South region followed by Northeast region. This finding coincidentally match with a 2015 research of @journal that describes these two regions as the most racist regions in the United States, by calculating number of google searches in the country that contain the N-word. 
-(https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0122963#pone.0122963.ref001) 
+According to sentiment analysis from blackpast record of events, we can see that most bad events took place in **South region** followed by **Northeast region**. These bad events are related to slavery and racism behavior (post-slavery) toward Africa-American.
+
+This finding is quite intriguing since it is inadvertently backed by a journal research from @journal that describes these two regions as the most racist regions in the United States. 
 
 # Bibliography

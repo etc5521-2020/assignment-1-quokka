@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.17)  28 AUG 2020 19:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.17)  28 AUG 2020 21:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -607,56 +607,71 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 {c:/Users/Vega/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map}]
-
-LaTeX Warning: Reference `fig:demo1' on page 2 undefined on input line 146.
-
-
-LaTeX Warning: Reference `figure:demo' on page 2 undefined on input line 146.
-
-
-LaTeX Warning: Reference `fig:demo2' on page 2 undefined on input line 148.
-
-
-LaTeX Warning: Reference `fig:demo2' on page 2 undefined on input line 150.
-
 <index_files/figure-latex/demo-1.pdf, id=25, 469.755pt x 325.215pt>
 File: index_files/figure-latex/demo-1.pdf Graphic file (type pdf)
 <use index_files/figure-latex/demo-1.pdf>
 Package pdftex.def Info: index_files/figure-latex/demo-1.pdf  used on input lin
-e 154.
+e 146.
 (pdftex.def)             Requested size: 281.85518pt x 195.1305pt.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-61.
+53.
 (c:/Users/Vega/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [2]
-<index_files/figure-latex/demo1-1.pdf, id=37, 441.65pt x 301.125pt>
+) [2 <./index_files/figure-latex/demo-1.pdf>]
+<index_files/figure-latex/demo1-1.pdf, id=43, 441.65pt x 301.125pt>
 File: index_files/figure-latex/demo1-1.pdf Graphic file (type pdf)
 <use index_files/figure-latex/demo1-1.pdf>
 Package pdftex.def Info: index_files/figure-latex/demo1-1.pdf  used on input li
-ne 170.
+ne 162.
 (pdftex.def)             Requested size: 469.7776pt x 320.3029pt.
-<index_files/figure-latex/demo2-1.pdf, id=38, 481.8pt x 381.425pt>
+<index_files/figure-latex/demo2-1.pdf, id=44, 481.8pt x 381.425pt>
 File: index_files/figure-latex/demo2-1.pdf Graphic file (type pdf)
 <use index_files/figure-latex/demo2-1.pdf>
 Package pdftex.def Info: index_files/figure-latex/demo2-1.pdf  used on input li
-ne 174.
+ne 166.
 (pdftex.def)             Requested size: 469.77148pt x 371.90242pt.
-<index_files/figure-latex/compareregion-1.pdf, id=39, 469.755pt x 325.215pt>
-File: index_files/figure-latex/compareregion-1.pdf Graphic file (type pdf)
-<use index_files/figure-latex/compareregion-1.pdf>
-Package pdftex.def Info: index_files/figure-latex/compareregion-1.pdf  used on 
-input line 182.
+
+LaTeX Warning: Reference `fig:demo1' on page 3 undefined on input line 171.
+
+
+LaTeX Warning: Reference `figure:demo' on page 3 undefined on input line 171.
+
+
+LaTeX Warning: Reference `fig:demo2' on page 3 undefined on input line 173.
+
+
+LaTeX Warning: Reference `fig:demo2' on page 3 undefined on input line 175.
+
+<index_files/figure-latex/compare-region-1.pdf, id=45, 469.755pt x 325.215pt>
+File: index_files/figure-latex/compare-region-1.pdf Graphic file (type pdf)
+<use index_files/figure-latex/compare-region-1.pdf>
+Package pdftex.def Info: index_files/figure-latex/compare-region-1.pdf  used on
+ input line 182.
+(pdftex.def)             Requested size: 281.85518pt x 195.1305pt.
+[3 <./index_files/figure-latex/demo1-1.pdf>] [4 <./index_files/figure-latex/dem
+o2-1.pdf>]
+
+LaTeX Warning: Reference `fig:compare-region' on page 5 undefined on input line
+ 189.
+
+<index_files/figure-latex/south-all-1.pdf, id=78, 469.755pt x 325.215pt>
+File: index_files/figure-latex/south-all-1.pdf Graphic file (type pdf)
+<use index_files/figure-latex/south-all-1.pdf>
+Package pdftex.def Info: index_files/figure-latex/south-all-1.pdf  used on inpu
+t line 195.
 (pdftex.def)             Requested size: 281.85518pt x 195.1305pt.
 
-LaTeX Warning: Reference `fig:compareregion' on page 3 undefined on input line 
-189.
+LaTeX Warning: Reference `fig:south-all' on page 5 undefined on input line 203.
 
-<index_files/figure-latex/south_all-1.pdf, id=40, 469.755pt x 325.215pt>
-File: index_files/figure-latex/south_all-1.pdf Graphic file (type pdf)
-<use index_files/figure-latex/south_all-1.pdf>
-Package pdftex.def Info: index_files/figure-latex/south_all-1.pdf  used on inpu
-t line 195.
+
+[5 <./index_files/figure-latex/compare-region-1.pdf> <./index_files/figure-late
+x/south-all-1.pdf>]
+<index_files/figure-latex/sentiment_region-1.pdf, id=96, 469.755pt x 325.215pt>
+
+File: index_files/figure-latex/sentiment_region-1.pdf Graphic file (type pdf)
+<use index_files/figure-latex/sentiment_region-1.pdf>
+Package pdftex.def Info: index_files/figure-latex/sentiment_region-1.pdf  used 
+on input line 214.
 (pdftex.def)             Requested size: 281.85518pt x 195.1305pt.
 
 ! LaTeX Error: \caption outside float.
@@ -665,15 +680,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.199 \caption
-              {Proportion of White and Black} 
+l.218 \caption
+              {Sentiment Analysis in Regions} 
 Here is how much of TeX's memory you used:
- 12562 strings out of 482841
- 187252 string characters out of 5955094
- 470685 words of memory out of 5000000
- 27640 multiletter control sequences out of 15000+600000
- 582953 words of font info for 95 fonts, out of 8000000 for 9000
+ 12584 strings out of 482841
+ 187769 string characters out of 5955094
+ 469685 words of memory out of 5000000
+ 27647 multiletter control sequences out of 15000+600000
+ 583119 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,6n,42p,899b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,6n,42p,899b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 !  ==> Fatal error occurred, no output PDF file produced!
