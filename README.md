@@ -6,6 +6,9 @@ Team members:
 
 * Dea Avega Editya
 * Siyi Li
+* Aryan Jain 
+* Vinny Vu
+
 
 # Steps
 
