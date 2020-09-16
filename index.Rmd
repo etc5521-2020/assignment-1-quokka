@@ -366,11 +366,11 @@ ggarrange(SA, ES, WS,
 After spotting the pattern, we are interested to explore further into the South region to see the slavery practice in division level. The South region consists of three divisions, South Atlantic, East South Central and West South Central.
 From figure \@ref(fig:south-all) we can see clearly that the East South-Central division has more a progressive pattern of slavery exploitation during the observed period, whereas other divisions tend to have more of a stable pattern of slavery practice. Nevertheless, all these divisions have a similar proportion of black slaves in the last census year of slavery period (1860). 
 
-## The most unfriendly region for African-Americans
+## The most unfriendly region towards African-Americans
 
-In this section, we will connect the past and post-slavery period in the USA through some observed events from blackpast data set before answering our main question. For the purpose, we will first filter country of interest in the data set to be only the USA. Later on, we will select only important words (filtered using English stop words of tidytext R package (@tidytext)). Having all essential words, we will try to find various sentiments in these words by using NRC sentiment (@nrc) and grouping the sentiments by region. 
+In this section, we will connect the slavery and post-slavery period in the USA through some observed events from blackpast data set before answering our main question. For the purpose of analysis, we will first filter country of interest in the data set to be only include the USA. From this we will select only important words (filtered using English stop words of tidytext R package (@tidytext)). Having all essential words, we aim to find various sentiments in these words by using NRC sentiment (@nrc) and group the sentiments by region. 
 
-In order to link this analysis with the previous section, we add variable of regions that correspond to the state names in the blackpast data set. For example, we add Northeast for covering states like Connecticut, New York and New Jersey. In addition we also focus on all events that related to slavery and racism behavior toward African-American, represented by subjects such as **"Slave Laws", "Slave Labor", "Racial Restrictions", "Racial Violence","Resistance to Enslavement", "The Slavery Controversy", and "Antebellum Slavery")**. 
+To link this analysis with the previous section, we add the regions that correspond to the state names in the blackpast data set. For example, we add Northeast for covering states like Connecticut, New York, and New Jersey. In addition we also focus on all events that related to slavery and racism behaviour toward African-American, represented by subjects such as **"Slave Laws", "Slave Labor", "Racial Restrictions", "Racial Violence", "Resistance to Enslavement", "The Slavery Controversy", and "Antebellum Slavery".)** 
 
 ```{r event, echo = FALSE, include = FALSE,  results="hide", message = FALSE}
 # select bad events in the US black history
@@ -437,7 +437,7 @@ text_tidy <- left_join(text_tidy, nrc_sentiments) %>%
 
 ```
 
-```{r sentiment-region, fig.cap = "Sentiment Analysis in Regions", echo = FALSE, message = FALSE, fig.align="center", out.width= "60%"}
+```{r sentiment-region, fig.cap = "Sentiment Analysis in Regions with sentiments of the words on the y-axis and count of words on the x-axis. From the plot we can see most of the words associated with Black Slavery are negative in nature having negative, fear and anger is the main sentiment and with trust being the lowest. We also see the South region contains most of the text analysed.", echo = FALSE, message = FALSE, fig.align="center", out.width= "60%"}
 text_tidy %>% 
   ggplot(aes(x = sentiment, y = word, fill= region, group = region)) +
   geom_col() +
@@ -450,7 +450,7 @@ text_tidy %>%
 
 ```
 
-```{r sentiment-negative, fig.cap = "Negative Nuances", out.width="50%", fig.align="center", echo = FALSE, message = FALSE}
+```{r sentiment-negative, fig.cap = "Negative Nuances from event statements with region on the x-axis and count of the words on the y-axis. From the plot we can see the South dominates in the count of text with fear and negative sentiments.", out.width="50%", fig.align="center", echo = FALSE, message = FALSE}
 
 # only bad sentiment analysed
 text_tidy %>% 
@@ -466,9 +466,9 @@ text_tidy %>%
 ```
 
 
-Using these method, we can observe occurrence of bad events in the USA history which mostly comprises of racial restrictions and racial violence. According to the analysis in figure \@ref(fig:sentiment-region), most nuance of observed events are related to **negative, fear and anger** feelings. Moreover, most events recorded were occurred in the South region. Again, it is not surprising given the previous finding that South region is the region that seems really exploiting slavery practice. 
+Using these methods, we can observe the occurrence of bad events in the USA history which comprise of racial restrictions and racial violence. According to the analysis in figure \@ref(fig:sentiment-region), most nuances of observed events are related to **negative, fear and anger** sentiments. Moreover, most events recorded occurred in the South region. Again, it is not surprising given the previous finding that South region is the region that most exploits slavery practice. 
 
-We then more focus on particular bad events which represented by sentiment of "disgust", "fear", "negative" and "sadness" (we get rid of positive sentiments such as joy) and plot it into bar chart as seen in figure \@ref(fig:sentiment-negative). Using these negative sentiments, we can see that South and Northeast region are seems like "unfriendly" to the African-American people, since both regions contribute to most of these bad events in the observed data. On the other hand, **West region** maybe a good place to live for African-American, due to very few bad incidents happened there.
+We then more focus on particular bad events which represented by sentiment of "disgust", "fear", "negative" and "sadness" (we get rid of positive sentiments such as joy) and plot it into bar chart as seen in figure \@ref(fig:sentiment-negative). Using these negative sentiments, we can see that South and Northeast region are most "unfriendly" towards African American people, since both regions contribute to most of the bad events in the observed data. On the other hand, **West region** may be a good place to live for African Americans, due to very few bad incidents occurring there.
 
 ## How does the exploitation of African slaves compare across time during the slavery period?
 
