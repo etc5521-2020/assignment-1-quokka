@@ -60,7 +60,7 @@ summary(african_names)
 
 # Introduction and motivation
 
-We are motivated to explore history of slavery in the United States of America (USA) and how this dark moment changed over time of hundred years. Through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md), we will look at how the situation at the moment was and what can we learn from the history that maybe has correlation with current racist behavior toward black people especially in the USA. 
+Juneteenth is a significant event for African Americans which occurred on June 19, 1865 where Union Gen. Gordon Granger issued an order officially freeing the enslaved African Americans @vox. Although this event occurred over 100 years ago issues still exist around the mistreatment of African Americans. Today we will still see protest and pleas around the violence and mistreatment experienced by the black community and #BlackLivesMatter movement surrounding the death of George Floyd @blacklives. Therefore, we are motivated to explore history of slavery in the United States of America (USA) and its significance in Black American history. This analysis will be conducted through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) @data.
 
 This report has several limitations: 
 \newline 1. Data sets used only contain relatively small observations, i.e. slaves_name record only covers numbers of slaves saved during their expedition. Hence, it may not really capture situation during slavery history.
