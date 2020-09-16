@@ -146,7 +146,8 @@ To answer the main question, we will first look at these secondary questions:
 2. Which region of the USA that had most exploited the practice? 
 3. Which region is unfriendly to black people?
 4. How does the exploitation of African slaves compare across time during the slavery period?
-5. Which subjects were more relevant in the slavery and post slavery era and which states were more active in spreading awareness during both the eras?
+5. Which subjects were more relevant in the slavery and post slavery era 
+6. Which states were more active in spreading awareness during both the eras?
 
 References of data sets sources:
 \newline 1. Tidytuesday (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) (@data),
