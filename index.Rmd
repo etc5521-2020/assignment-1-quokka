@@ -572,6 +572,10 @@ In section 4.2 we were able to determine the practice was mostly exploited in **
 
 ## The most relevant subjects in the slavery and post-slavery era
 
+To explore subjects based on the slavery and post-slavery eras, the data had to be filtered based on the year and a new column title **slavery** was created and the separating year was selected as 1865 which was the year slavery was abolished.
+
+The data was then filtered again to only show observations for United States and later grouped by the **subject** column.
+
 ```{r aryan-1, fig.cap="Most relavent subjects in slavery and post-slavery era"}
 blackpast$slavery[blackpast$year < 1865] = "Active"
 blackpast$slavery[blackpast$year >= 1865] = "Abolished"
@@ -591,6 +595,10 @@ Unsurprisingly, the figure \@ref(fig:aryan-1) reveals that slave laws, resistanc
 The post slavery era introduced some new subjects for the black history such as black education, formation of black organizations, and with voting rights, black population and black empowerment became majors subject for politics. The black population was also involved in major judicial decisions, major sports and even press.
 
 ## The states that participated the most in black empowerment post slavery
+
+The dataset filtered in the last section was then filtered again to leave out N.A. values for states and then filtered again to only show observations for subjects such as Black Organisation, The Civil Rights Movement and The Black Press as they are representative of black empowerment.
+
+The filtered data was then plotted on a graph to show the states against the count of the selected activities.
 
 ```{r aryan-2, fig.cap="Most active states for black empowerment post slavery"}
 blackpast %>%
