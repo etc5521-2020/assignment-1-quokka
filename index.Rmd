@@ -147,7 +147,7 @@ To answer the main question, we will first look at these secondary questions:
 3. Which region is unfriendly to black people?
 4. How does the exploitation of African slaves compare across time during the slavery period?
 5. Which subjects were more relevant in the slavery and post slavery era 
-6. Which states were more active in spreading awareness during both the eras?
+6. Which states were more active in spreading awareness after the abolition of slavery?
 
 References of data sets sources:
 \newline 1. Tidytuesday (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) (@data),
@@ -565,11 +565,6 @@ slave_routes %>%
        title = "Number of Slaves Arrived per Voyage from 1700")
 ```
 
-### Conclusion 
-
-From the analysis conducted we are successfully able to explore the history of slavery in America and its prominence in today's history of racism towards African Americans. 
-
-In section 4.2 we were able to determine the practice was mostly exploited in **the South region.** 
 
 ## The most relevant subjects in the slavery and post-slavery era
 
@@ -620,11 +615,17 @@ blackpast %>%
 
 The figure \@ref(fig:aryan-2) revealed that New York followed by the capital District of Columbia (now known as Washington D.C.) were some of the most active states for promoting black education, formation of black organizations, black press and overall empowerment of the african-american race. New York also hosted several events for "The Civil Rights Movement".
 
-## Summary
+# Conclusion 
+
+From the analysis conducted we are successfully able to explore the history of slavery in America and its prominence in today's history of racism towards African Americans. 
+
+In section 4.2 we were able to determine the practice was mostly exploited in **the South region.** 
 
 These events effecting slavery in America are further explored in section 4.3 where from the sentiment analysis e can see that most bad events took place in **South region,** followed by **Northeast region.** These bad events recorded are related to slavery exploitation and racism behaviour/racial violence (in post-slavery era) towards Africa-American. Hence, we may argue that today's racism are possibly are result of associations with the long history of enslavement, especially in the case of the South region. This finding is quite intriguing since it is inadvertently backed by a journal research from @journal that describe these two regions (South and Northeast) as the most racist regions in the United States.
 
 Section 4.4 further explores American slavery looking at the voyages of slaves during the period finding the exportation of slaves peaking in the early 1800s declining until Juneteenth. However, despite the reduction in slaves exported the slaves exported per voyage grew deep into the 1800s.
+
+Section 4.5 shows how after the abolition of slavery the events surrounding black population shifted from emancipation, resistance to slavery and changes in slave laws to black education, black organizations and black politics which in itself shows the continued efforts to empower the once tormented race and section 4.6 shows the states that made the most efforts in doing so with New York and Washington D.C. being at the forefront.
 
 This report has been completed with the use of the following R packages: @tidyverse, @janitor, @readr, @naniar, @dplyr, @gridExtra, @ggpubr, @reshape2, @tidytext, @lubridate, @plotly, @ggthemes, and @patchwork 
 
