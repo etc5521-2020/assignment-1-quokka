@@ -583,7 +583,9 @@ blackpast %>%
   arrange(desc(n)) %>%
   filter((n >= 7 & slavery == "Active") | (n >= 14 & slavery == "Abolished")) %>%
   ggplot(aes(y = subject, x = n, fill = slavery)) +
-  geom_col()
+  geom_col() +
+  xlab("") +
+  ylab("")
 ```
 
 Unsurprisingly, the figure \@ref(fig:aryan-1) reveals that slave laws, resistance of enslavement and racial restrictions were some of the most relevant subjects in the slavery era whereas subjects such as racial violence cannot be seen in the era which could be due to the fact that it was considered rather ordinary.
