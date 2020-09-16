@@ -127,6 +127,8 @@ The wrangling process is conducted by grouping some variables in the african_nam
 
 Furthermore, this report also takes advantage of the comprehensive record of African-Americans' historical events in the blackpast data set, to analyze which region of USA are unfriendly to the African-American people relating to unfortunate events recorded.
 
+# Questions for Anlaysis 
+
 Therefore, using all of these mentioned data sets this report will find a brief explanation on a main question:
 **What can we learn from the history of slavery in the USA and its prominence in today's issues surrounding racism towards African-Americans?** 
 
@@ -212,7 +214,7 @@ When we look at the age distribution of slaves as shown in figure \@ref(fig:demo
 
 Though, there are some outliers that can be spotted from the figure \@ref(fig:demo2) which we suspect due to errors in data recording, i.e. a boy has age of 40 and a man is 77 years old (which we think way too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as some children under 5 years old, which are absolutely pretty young. One possible reason is that their parents are among the slaves that brought along their children.
 
-## Finding the most exploiting region
+## Exploring which area has most significantly exploited the slavery of Afrians
 
 ```{r region_census, echo = FALSE, message = FALSE}
 
@@ -299,15 +301,15 @@ W <- census_tidy %>%
 
 ```
 
-```{r compare-region, fig.cap= "Composition of White and Black", fig.align="center", out.height="60%", out.width="60%", echo = FALSE}
+```{r compare-region, fig.cap= "Composition of White and Black people in the US by region with the census year on the x-axis and proportion of people on the y-axis. From the plot we can see the South region stands out having the largest proportion of slaves across all regions.", fig.align="center", out.height="60%", out.width="60%", echo = FALSE}
 
 ggarrange(N, M, S, W,
           ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
 ```
 
-For answering the question of which region that most exploits the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will see the trend of proportion from these three categories (white, black slaves, and black free), as seen in figure \@ref(fig:compare-region). In the figure, We are not covering census year of 1870 since the enslavement ended in that year.
+To answer the question of which region that has most significantly exploited the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will be exploring the trend of the proportion from these three categories (white, black slaves, and black free), as seen in figure \@ref(fig:compare-region). In the figure, we are not covering the census in 1870 since enslavement practices ended in that year.
 
-Seeing the plot, we can easily spot that **South region** has the most contrast pattern which distinguish the region from the others. The proportion of white people in South region slightly decrease from 1800 until 1860, however the proportion of black slaves is growing and comprises more than a quarter of the total population in that region.
+From the plot, we note that the **South region** has the most contrasting pattern distinguishing the region from the others. The proportion of white people in the South region slightly decrease from 1800 until 1860, however, the proportion of black slaves is growing and comprises reaching more than a quarter of the total population in that region.
 
 ```{r south_div, echo = FALSE, include = FALSE, results = "hide", message = FALSE}
 
@@ -355,14 +357,14 @@ WS <- census_south %>%
 WS
 ```
 
-```{r south-all, fig.cap= "Proportion of White and Black", fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
+```{r south-all, fig.cap= "Proportion of White and Black by the divisions of the South region in to US with census year on the x-axis and proportion of people on the y-axis. From the plot we can the proportion remains fairly stable across the South Atlantic region, the East South Central region experiences an increasing proportion of black slaves across the period whereas the West South Central region experiences the opposite trend.", fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
 
 ggarrange(SA, ES, WS,
           ncol = 1, nrow = 3, legend = "top", common.legend = TRUE)
 ```
 
-After spotting the pattern, we are interested to explore further in the South region to see the slavery practice in division level. South region consists of three divisions, South Atlantic, East South Central and West South Central.
-From figure \@ref(fig:south-all) we can see clearly that East South Central division has more progressive pattern of slavery exploitation during the observed period, where other divisions tend to have more stable pattern of slavery practice. Nevertheless, all of these divisions have quite similar proportion of black slaves in the last census year of slavery period (1860). 
+After spotting the pattern, we are interested to explore further into the South region to see the slavery practice in division level. The South region consists of three divisions, South Atlantic, East South Central and West South Central.
+From figure \@ref(fig:south-all) we can see clearly that the East South-Central division has more a progressive pattern of slavery exploitation during the observed period, whereas other divisions tend to have more of a stable pattern of slavery practice. Nevertheless, all these divisions have a similar proportion of black slaves in the last census year of slavery period (1860). 
 
 ## The most unfriendly region for African-Americans
 
