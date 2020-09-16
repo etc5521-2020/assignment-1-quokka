@@ -5,9 +5,9 @@ author:
 - Siyi Li
 date: "`r Sys.Date()`"
 output:
-  bookdown::pdf_document2: default
-  html_document:
-    df_print: paged
+  # bookdown::pdf_document2: default
+  # html_document:
+  #   df_print: paged
   bookdown::html_document2:
     df_print: paged
 team: Quokka
@@ -18,6 +18,12 @@ nocite: |
 ---
 
 [This assignment is for ETC5521 Assignment 1 by Team `r rmarkdown::metadata$team` comprising of `r knitr::combine_words(rmarkdown::metadata$author)`.]{style="color:#006DAE;"}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE)
+```
 
 ```{r read-data, echo = FALSE, include = FALSE,  results="hide", warning = FALSE, message = FALSE}
 
@@ -36,6 +42,7 @@ library(lubridate)
 library(plotly)
 library(ggthemes)
 library(bookdown)
+library(shiny)
 
 # Get the Data
 
@@ -101,8 +108,18 @@ References of data sets sources:
 
 ## Demographic of Black Slaves
 
+In this section, we will extract some information from african_names dataset related to demographic of slaves. By extracting and analyzing the data, we can have an initial picture of the enslavement practice before moving on to further analysis in the following sections.
 
-```{r demo, fig.cap = "Maturity of Slaves", echo = FALSE, warning = FALSE, out.height="60%", out.width="60%",fig.align = "center", message=FALSE}
+We group the category of slaves by **id** (since names are not always unique), **gender** and **age** and plot gender category on a bar chart in figure \@ref(fig:demo1). The plot shows us that men occupy the largest percentage of total slaves in the observed data, followed by boys and subsequently women. Meanwhile, girls contribute the smallest to the total population of slaves. 
+
+```{r demo1, fig.cap="Composition Based on Gender", fig.align="center", echo = FALSE, warning=FALSE}
+# Aryan
+african_names$gender[african_names$age < 18 & african_names$gender %in% c("Boy", "Man")] = "Boy"
+african_names$gender[african_names$age >= 18 & african_names$gender %in% c("Boy", "Man")] = "Man"
+african_names$gender[african_names$age < 18 & african_names$gender %in% c("Girl", "Woman")] = "Girl"
+african_names$gender[african_names$age >= 18 & african_names$gender %in% c("Girl", "Woman")] = "Woman"
+
+
 african_names %>%
   select(id, gender, age)%>%
   na.omit()%>%
@@ -111,6 +128,22 @@ african_names %>%
   mutate(total=n)%>%
   select(-n)%>%
   as_tibble()-> new
+
+# new_plty <-
+#   plot_ly(new, labels = ~gender, values = ~total, type ='pie', width = 400, height = 200)
+# new_plty %>% layout(title='Composition Based on Gender',
+#                     xaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE),
+#                     yaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE))
+
+ggplot(new, aes(x = gender, y = total, fill=factor(gender))) +
+  geom_col() +
+  xlab("")+ylab("Number") +
+  labs(fill = "Gender")
+```
+
+In general, we can see that the male proportion is significantly larger than female. However, \@ref(fig:demo) also reveals that children make up for almost one-third of the total slave population.
+
+```{r demo, fig.cap = "Maturity of Slaves", echo = FALSE, warning = FALSE, out.height="60%", out.width="60%",fig.align = "center", message=FALSE}
 
  new_type<-rbind(new, c("children", colSums(new[1:2,2])),
                  c("Adults", colSums(new[3:4,2])))
@@ -125,19 +158,9 @@ filter(new_type, gender %in% target)%>%
   
 ```
 
+Looking at the age distribution of slaves as shown in figure \@ref(fig:demo2), we can observe that the average age of the adult slaves was between **23 to 26** with majority being younger than **35 years of age**. This range of productive ages is not surprising since they were brought into the country mainly for manual labor, according to prior information we got from blackpast.org.
 
-```{r demo1, fig.cap="Composition Based on Gender", out.height="50%", out.width="50%", fig.align="center", echo = FALSE}
-
-new_plty <-
-  plot_ly(new, labels = ~gender, values = ~total, type ='pie', width = 400, height = 200)
-new_plty %>% layout(title='Composition of Slaves Based on Gender',
-                    xaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE),
-                    yaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE))
-
-```
-
-
-```{r demo2, fig.cap = "Age Distribution", echo = FALSE, out.height="50%", fig.align="center",out.width="50%", message=FALSE}
+```{r demo2, fig.cap = "Age Distribution", out.width="110%", echo = FALSE, fig.align="center", message=FALSE}
 african_names%>%
   select(gender, age)%>%
   na.omit()%>%
@@ -149,22 +172,14 @@ african_names%>%
           y=~gender,
           color=~gender,
           data=afrian_new) %>% 
-    layout(title="Age of different gender",
+    layout(title="",
          yaxis=list(title="",
                       zeroline=FALSE),
          xaxis=list(title="Age",
                       zeroline=FALSE))
 ```
 
-In this section, we will extract some information from african_names dataset related to demographic of slaves. By extracting and analyzing the data, we can have initial picture of enslavement practice before moving on to further analysis in the following sections. 
-
-We group the category of slaves by **id** (since we are not interested to know their names and sometimes people can have similar names), **gender** and **age**. Thus, we can get information about gender category from a pie chart of figure \@ref(fig:demo1). The plot shows us that men occupy the largest percentage of total slaves in the observed data, followed by boys. Proportion of boys is also larger than women. Meanwhile, girls contribute to the smallest percentage of slaves. 
-
-In general, we can see that men and boys' proportion are significantly larger than female (women and girls). However, we realize that if we look at children proportion (boys and girls) as shown in figure \@ref(fig:demo), it is really sad to know that they make up almost a half of the total slaves. 
-
-When we look at the age distribution of slaves as shown in figure \@ref(fig:demo2), majority of the slaves are between **15 and 35 years old**. This range of productive ages is not surprising since they were brought into the country mainly to be a worker, according to prior information we got from blackpast.org. 
-
-Though, there are some outliers that can be spotted from the figure \@ref(fig:demo2) which we suspect due to errors in data recording, i.e. a boy has age of 40 and a man is 77 years old (which we think way too old to be a slave). Another finding is there are some slaves that just age 5 months old as well as some children under 5 years old, which are absolutely pretty young. One possible reason is that their parents are among the slaves that brought along their children.
+Although, there are some outliers such as a 77 years old man and a 70 years old women which is definitely not ideal age for manual labor. We could also observe that some slaves are as young as 5 month of age which could be due to the fact that they were brought along with their parents as slaves.
 
 ## Finding the most exploiting region
 
@@ -421,6 +436,42 @@ text_tidy %>%
 Using these method, we can observe occurrence of bad events in the USA history which mostly comprises of racial restrictions and racial violence. According to the analysis in figure \@ref(fig:sentiment-region), most nuance of observed events are related to **negative, fear and anger** feelings. Moreover, most events recorded were occurred in the South region. Again, it is not surprising given the previous finding that South region is the region that seems really exploiting slavery practice. 
 
 We then more focus on particular bad events which represented by sentiment of "disgust", "fear", "negative" and "sadness" (we get rid of positive sentiments such as joy) and plot it into bar chart as seen in figure \@ref(fig:sentiment-negative). Using these negative sentiments, we can see that South and Northeast region are seems like "unfriendly" to the African-American people, since both regions contribute to most of these bad events in the observed data. On the other hand, **West region** maybe a good place to live for African-American, due to very few bad incidents happened there.
+
+## The most relevant subjects in the slavery and post-slavery era
+
+```{r aryan-1}
+blackpast$slavery[blackpast$year < 1865] = "Active"
+blackpast$slavery[blackpast$year >= 1865] = "Abolished"
+
+blackpast %>% 
+  filter(country %in% c("United States", "The United States", "U.S.", "Unied States", "Colonial America")) %>%
+  group_by(subject, slavery) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  filter((n >= 7 & slavery == "Active") | (n >= 14 & slavery == "Abolished")) %>%
+  ggplot(aes(y = subject, x = n, fill = slavery)) +
+  geom_col()
+```
+Unsurprisingly, the figure \@ref(fig:aryan-1) reveals that slave laws, resistance of enslavement and racial restrictions were some of the most relevant subjects in the slavery era whereas subjects such as racial violence cannot be seen in the era which could be due to the fact that it was considered rather ordinary.
+
+The post slavery era introduced some new subjects for the black history such as black education, formation of black organizations, and with voting rights, black population and black empowerment became majors subject for politics. The black population was also involved in major judicial decisions, major sports and even press.
+
+## The states that participated the most in black empowerment post slavery
+
+```{r aryan-2}
+blackpast %>%
+  filter(country %in% c("United States", "The United States", "U.S.", "Unied States", "Colonial America")) %>%
+  filter(!is.na(state) & state != "n.a." & state != "n. a.") %>%
+  filter(subject %in% c("Black Education", "Black Organizations", "The Civil Rights Movement", "The Black Press")) %>%
+  filter(slavery == "Abolished") %>%
+  group_by(state, slavery) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  filter(n > 2) %>%
+  ggplot(aes(y = state, x = n)) +
+  geom_col()
+```
+The figure \@ref(fig:aryan-2) revealed that New York followed by the capital District of Columbia (now known as Washington D.C.) were some of the most active states for promoting black education, formation of black organizations, black press and overall empowerment of the african-american race. New York also hosted several events for "The Civil Rights Movement".
 
 ## Summary
 
