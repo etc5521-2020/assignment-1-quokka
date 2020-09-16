@@ -36,6 +36,7 @@ library(lubridate)
 library(plotly)
 library(ggthemes)
 library(bookdown)
+library(patchwork)
 
 # Get the Data
 
@@ -421,6 +422,83 @@ text_tidy %>%
 Using these method, we can observe occurrence of bad events in the USA history which mostly comprises of racial restrictions and racial violence. According to the analysis in figure \@ref(fig:sentiment-region), most nuance of observed events are related to **negative, fear and anger** feelings. Moreover, most events recorded were occurred in the South region. Again, it is not surprising given the previous finding that South region is the region that seems really exploiting slavery practice. 
 
 We then more focus on particular bad events which represented by sentiment of "disgust", "fear", "negative" and "sadness" (we get rid of positive sentiments such as joy) and plot it into bar chart as seen in figure \@ref(fig:sentiment-negative). Using these negative sentiments, we can see that South and Northeast region are seems like "unfriendly" to the African-American people, since both regions contribute to most of these bad events in the observed data. On the other hand, **West region** maybe a good place to live for African-American, due to very few bad incidents happened there.
+
+## How does the exploitation of African slaves compare across time during the slavery period?
+
+To explore the exploitation of African slaves for all countries across time during the slavery period we will be analysing data from the slave_routes data set which contains 85% of all voyages that embarked captives @data. Note there is missing data which only as the data set only contains details on the Africans who arrived alive at the final port. Many slaves died in transport and or details around the slave voyage were not fully recorded @data.
+
+Figure \@ref(fig:total-slaves-line) shows the line graph of the total slaves arriving by voyage each year with a smoothed line showing the trend in slaves exported across time. From the plot we can see an overall upward trend in the number of slaves exported from 1700 until 1800 followed by a sharper downward trend approaching 0 exported slaves toward the end of the period. The yearly exported slaves’ peaks at 79,472 arriving in 1829 and reaches 700 in 1866. From the plot, however, we see sharp fluctuations in the total arrivals. These fluctuations may however be resulted from missing data which will be assessed in the following section.
+
+
+```{r total-slaves-line, fig.cap= "Line graph showing the total slaves arriving by voyage per year with year or arrival on the x-axis and total salves arriving per year on the y-axis", warning= FALSE, message=FALSE, fig.height= 3}
+slave_routes %>%
+  filter(year_arrival >= 1700) %>%
+  group_by(year_arrival) %>%
+  dplyr::summarise(total = sum(n_slaves_arrived, na.rm = TRUE)) %>%
+  ggplot(aes(x = year_arrival,
+             y = total)) +
+  geom_line() +
+  geom_smooth() +
+  labs(x = "year of arrival",
+       y = "total slaves arrived per year",
+       title = "Total Slaves Arriving by Year Line Graph")
+```
+
+
+Figure \@ref(fig:ship-count-hist) shows the histogram of the number of voyages per year in plot A and number of voyages per decade in plot B. From plot A we can see sharp dips in the number of voyages around 1745, 1780, 1809 and 1832. These dips are reflective of the dips that appear in Figure \@ref(fig:total-slaves-line). Using the blackpast we can determine significant events occurring around those years to determine if these dips are genuine or resulting from missing Data. In 1745, 1780 and 1832 we see there is no events that would drastically effect the number of voyages, in fact we see detrimental events such as the banning of teaching African’s reading and writing and restricting rights to preach. Therefore, these dips in values, are likely due to missing values. However, in 1807 we see the US government abolishing the importation of enslaved Africans. However, 250,000 Africans are illegally imported from 1808, therefore, potentially highlighting the dips and missing values during these years as slaves were not officially recorded.
+
+Plot B shows the overall trend in the number of voyages that grows from 1700 peaking in the 1770s then steadily declines after reaching the lowest in the 1865, however, it should be noted data is only recorded until 1866. There also appears to be a dip in the 1780s potentially highlighting missing values. 
+
+
+```{r ship-count-hist, fig.cap= "Histograms showing the number of voyages per year/decade with year on the x-axis and number of voyages per year (A) and per decade (B) on the y-axis", warning=FALSE, fig.height= 3}
+p1 <- slave_routes %>%
+  filter(year_arrival >= 1700) %>%
+  ggplot(aes(x = year_arrival)) +
+  geom_histogram(binwidth = 1) +
+  labs(y = "voyages per year",
+       x = "")
+
+p2 <- slave_routes %>%
+  filter(year_arrival >= 1700) %>%
+  ggplot(aes(x = year_arrival)) +
+  geom_histogram(binwidth = 10) +
+  labs(y = "voyages per decade", x = "year of arrival")
+
+p1 + p2 +plot_layout(guides = "collect", nrow = 2) +plot_annotation(title = "Number of Voyages Histrogram",tag_levels = 'A')
+```
+
+To further explore the exploitation of slaves the following plots have been included to examine the number of slaves arrived per voyage. Figure \@ref(fig:arrival-box) shows the boxplot of the number of slaves arrived per voyage each decade. From the plot we can see an increasing trend in the average slaves arrived per voyage peaking in the 1860s. In later years we also see an increased spread in the number of slaves per voyage and the increased presence of outliers with the peak at 1,700 slaves arriving.
+
+```{r arrival-box, fig.cap= "Boxplot showing the number of slaves arriving per voyage by decade with year on the x-axis and number of slaves arrived on the y-axis", warning= FALSE, fig.height= 3}
+slave_routes %>%
+  mutate(decade = round(year_arrival - 4.5, -1)) %>%
+  filter(year_arrival >= 1570) %>%
+  group_by(decade) %>%
+  ggplot(aes(x = year_arrival,
+             y = n_slaves_arrived,
+             group = decade)) +
+  geom_boxplot() +
+  labs(x = "year of arrival",
+       y = "number of slaves arrived",
+       title = "Number of Slaves Arrived per Voyage")
+```
+
+To further explore this \@ref(fig:arrival-box-filter) shows the same boxplots, however, filtered for the year 1700 onward and removed counts above1500 to better compare decade counts. From the plot we can see from 1700 to 1800 the average count and spread per voyage remains fairly constant. From 1800 onward we see a pickup in the average slaves per voyage and the increased prominence of large slaves arriving per voyage. Across all decades there are voyages with 0 values highlighting the presence of missing values.
+
+```{r arrival-box-filter, fig.cap= "Boxplot showing the number of slaves arriving per voyage by decade from 1700 and significantly large values filtered with year on the x-axis and number of slaves arrived on the y-axis", warning=FALSE, fig.height= 3}
+slave_routes %>%
+  filter(year_arrival >= 1700) %>%
+  filter(n_slaves_arrived <= 1500) %>%
+  mutate(decade = round(year_arrival - 4.5, -1)) %>%
+  group_by(decade) %>%
+  ggplot(aes(x = year_arrival,
+             y = n_slaves_arrived,
+             group = decade)) +
+  geom_boxplot() +
+  labs(x = "year of arrival",
+       y = "number of slaves arrived",
+       title = "Number of Slaves Arrived per Voyage from 1700")
+```
 
 ## Summary
 
