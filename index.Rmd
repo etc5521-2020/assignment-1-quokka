@@ -437,9 +437,9 @@ text_tidy <- left_join(text_tidy, nrc_sentiments) %>%
 
 ```
 
-```{r sentiment-region, fig.cap = "Sentiment Analysis in Regions with sentiments of the words on the y-axis and count of words on the x-axis. From the plot we can see most of the words associated with Black Slavery are negative in nature having negative, fear and anger is the main sentiment and with trust being the lowest. We also see the South region contains most of the text analysed.", echo = FALSE, message = FALSE, fig.align="center", out.width= "60%"}
+```{r sentiment-region, fig.cap = "Sentiment Analysis in Regions with sentiments of the words on the y-axis and count of words on the x-axis. From the plot we can see most of the words associated with Black Slavery are negative in nature having negative, fear and anger is the main sentiment and with trust being the lowest. We also see the South region contains most of the text analysed.", echo = FALSE, message = FALSE, warning = FALSE,fig.align="center", out.width= "60%"}
 text_tidy %>% 
-  ggplot(aes(x = sentiment, y = word, fill= region, group = region)) +
+  ggplot(aes(x = fct_reorder(sentiment, word), y = word, fill= region, group = region)) +
   geom_col() +
   xlab("") +
   ylab("")+
@@ -449,6 +449,7 @@ text_tidy %>%
         axis.ticks.x=element_blank())
 
 ```
+
 
 ```{r sentiment-negative, fig.cap = "Negative Nuances from event statements with region on the x-axis and count of the words on the y-axis. From the plot we can see the South dominates in the count of text with fear and negative sentiments.", out.width="50%", fig.align="center", echo = FALSE, message = FALSE}
 
