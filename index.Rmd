@@ -3,6 +3,8 @@ title: "ETC5521 Assignment 1"
 author:
 - Dea Avega Editya
 - Siyi Li
+- Vinny Vu
+- Aryan Jain
 date: "`r Sys.Date()`"
 output:
   # bookdown::pdf_document2: default
@@ -68,11 +70,14 @@ summary(african_names)
 
 # Introduction and motivation
 
-Juneteenth is a significant event for African Americans which occurred on June 19, 1865 where Union Gen. Gordon Granger issued an order officially freeing the enslaved African Americans (@vox.) Although this event occurred over 100 years ago issues still exist around the mistreatment of African Americans. Today we will still see protest and pleas around the violence and mistreatment experienced by the black community and #BlackLivesMatter movement surrounding the death of George Floyd (@blacklives.) Therefore, we are motivated to explore history of slavery in the United States of America (USA) and its significance in Black American history. This analysis will be conducted through the data that sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) (@data.)
+Juneteenth is a significant event for African Americans which occurred on June 19, 1865 where Union Gen. Gordon Granger issued an order officially freeing the enslaved African Americans (@vox.) Although this event occurred over 100 years ago issues still exist around the mistreatment of African Americans. Today we will still see protest and pleas around the violence and mistreatment experienced by the black community and #BlackLivesMatter movement surrounding the death of George Floyd (@blacklives.) Therefore, we are motivated to explore history of slavery in the United States of America (USA) and its significance in Black American history. This analysis will be conducted through the data sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) (@data.)
 
-This report has several limitations: 
+This report has several limitations:
+
 \newline 1. Data sets used only contain relatively small observations, i.e. slaves_name record only covers numbers of slaves saved during their expedition. Hence, it may not really capture situation during slavery history.
+
 \newline 2. Census data only capture US demographics from 1790 to 1870 which is quite short regarding long existence of slavery (prior to the census period). In addition, West region only has census data of year 1850 and 1860.
+
 \newline 3. Some proportion of data has N/A value and errors which would be omitted during data exploration. 
 
 # Data description
@@ -326,7 +331,7 @@ ggarrange(N, M, S, W,
 
 To answer the question of which region that has most significantly exploited the slavery practice, we will not look at the number of black slaves in each region of the USA. Instead, we will be exploring the trend of the proportion from these three categories (white, black slaves, and black free), as seen in figure \@ref(fig:compare-region). In the figure, we are not covering the census in 1870 since enslavement practices ended in that year.
 
-From the plot, we note that the **South region** has the most contrasting pattern distinguishing the region from the others. The proportion of white people in the South region slightly decrease from 1800 until 1860, however, the proportion of black slaves is growing and comprises reaching more than a quarter of the total population in that region.
+From the plot, we note that the **South region** has the most contrasting pattern distinguishing the region from the others. The proportion of white people in the South region slightly decrease from 1800 until 1860, however, the proportion of black slaves is growing reaching more than a quarter of the total population in that region.
 
 ```{r south_div, echo = FALSE, include = FALSE, results = "hide", message = FALSE}
 
@@ -374,14 +379,14 @@ WS <- census_south %>%
 WS
 ```
 
-```{r south-all, fig.cap= "Proportion of White and Black by the divisions of the South region in to US with census year on the x-axis and proportion of people on the y-axis. From the plot we can the proportion remains fairly stable across the South Atlantic region, the East South Central region experiences an increasing proportion of black slaves across the period whereas the West South Central region experiences the opposite trend.", fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
+```{r south-all, fig.cap= "Proportion of White and Black by the divisions of the South region in the US with census year on the x-axis and proportion of people on the y-axis. From the plot we can the proportion remains fairly stable across the South Atlantic region, the East South Central region experiences an increasing proportion of black slaves across the period whereas the West South Central region experiences the opposite trend.", fig.align="center", out.height="60%", out.width="60%", echo = FALSE, message = FALSE}
 
 ggarrange(SA, ES, WS,
           ncol = 1, nrow = 3, legend = "top", common.legend = TRUE)
 ```
 
 After spotting the pattern, we are interested to explore further into the South region to see the slavery practice in division level. The South region consists of three divisions, South Atlantic, East South Central and West South Central.
-From figure \@ref(fig:south-all) we can see clearly that the East South-Central division has more a progressive pattern of slavery exploitation during the observed period, whereas other divisions tend to have more of a stable pattern of slavery practice. Nevertheless, all these divisions have a similar proportion of black slaves in the last census year of slavery period (1860). 
+From figure \@ref(fig:south-all) we can see clearly that the East South-Central division has a more progressive pattern of slavery exploitation during the observed period, whereas other divisions tend to have more of a stable pattern of slavery practice. Nevertheless, all these divisions have a similar proportion of black slaves in the last census year of slavery period (1860). 
 
 ## The most unfriendly region towards African-Americans
 
