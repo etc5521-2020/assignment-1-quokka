@@ -1,3 +1,15 @@
+Through this analysis we are motivated to explore history of slavery in the United States of America (USA) and its significance in Black American history. This analysis will be conducted through the data sourced from tidytuesday github (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md)
+
+Through this analysis we hope to answer the following questions: 
+
+What can we learn from the history of slavery in the USA and its prominence in today’s issues surrounding racism towards African-Americans? 
+1. What is the demographic of black slaves? 
+2. Which region of the USA that had most exploited the practice? 
+3. Which region is unfriendly to black people? 
+4. How does the exploitation of African slaves compare across time during the slavery period? 
+5. Which subjects were more relevant in the slavery and post slavery era 6. Which states were more active in spreading awareness after the abolition of slavery?
+
+
 # ETC5521 Assignment 1 
 
 Team name: Quokka
